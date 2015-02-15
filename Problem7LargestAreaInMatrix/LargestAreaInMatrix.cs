@@ -31,7 +31,7 @@ namespace Problem7LargestAreaInMatrix
             Console.WriteLine("Please,enter number for colunms");
             int numberM = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please, enter {0} separated by space", numberN * numberM);
+            Console.WriteLine("Please, enter {0} numbers separated by space", numberN * numberM);
             string text = Console.ReadLine();
 
             string[] elements = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -52,7 +52,7 @@ namespace Problem7LargestAreaInMatrix
 
             Queue myQ = new Queue();
             int largestArea = 0;
-            int counter = 0;
+            int counter = 1;
             
 
             for (int row = 0; row < numberN; row++)
@@ -65,9 +65,9 @@ namespace Problem7LargestAreaInMatrix
                     while (myQ.Count > 0)
                     {
                         myQ.Dequeue();
-                        for (int i = 0 ; i < numberN-1; i++)
+                        for (int i = 0 ; i < numberN; i++)
                         {
-                            for (int j = 0; j < numberM-1; j++)
+                            for (int j = 0; j < numberM; j++)
                             {
                                 if (!matrixBool[i, j] && matrix[row, col] == matrix[i, j])
                                 {
@@ -83,12 +83,11 @@ namespace Problem7LargestAreaInMatrix
                     {
                         largestArea = counter;
                     }
-                    counter = 0;
+                    counter = 1;
                     for (int m = 0; m < numberN; m++)
                     {
                         for (int k = 0; k < numberM; k++)
                         {
-                           
                             matrixBool[m, k] = false;
                         }
                     }
@@ -112,7 +111,8 @@ namespace Problem7LargestAreaInMatrix
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(largestArea);
+            Console.WriteLine();
+            Console.WriteLine("Largest area = {0}",largestArea);
         }
     }
 
